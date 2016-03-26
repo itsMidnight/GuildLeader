@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Move : MonoBehaviour
+public class MovingLine : MonoBehaviour
 {
     public int force;
     public Color color;
@@ -29,9 +29,12 @@ public class Move : MonoBehaviour
 
         if (inRange && Input.GetKeyDown(KeyCode.Space))
         {
-
             spRend.color = Color.green;
-            //spRend.enabled = false;
+        }
+
+        if (inRange && Input.GetMouseButtonDown(0))
+        {
+            spRend.color = Color.green;
         }
     }
 
