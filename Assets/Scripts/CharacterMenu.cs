@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterMenu : MonoBehaviour {
 
-	// Use this for initialization
+   
 	void Start () {
 	
 	}
@@ -12,4 +12,13 @@ public class CharacterMenu : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void OnGUI()
+    {
+        int i = 0; 
+        if(i<1)
+        {
+
+        }
+    }
 }
