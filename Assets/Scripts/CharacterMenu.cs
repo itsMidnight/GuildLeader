@@ -52,8 +52,9 @@ public class MemberManager
 {
     List<GuildMember> currentMembers;
     GuildMember[] raidTeam;
-    static readonly int MaxRaidSize = 5;
     AvailableGuildies all;
+
+    public static readonly int MaxRaidSize = 5;
     static readonly string GuildieList = "GuildMemberList.xml"; 
     public MemberManager()
     {
@@ -85,7 +86,7 @@ public class MemberManager
     public bool SaveList()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(AvailableGuildies));
-        FileStream fs = new FileStream(GuildieList, FileMode.Open);
+        FileStream fs = new FileStream(GuildieList, FileMode.OpenOrCreate);
         AvailableGuildies po;
         po = (AvailableGuildies)serializer.Deserialize(fs);
         return true;
@@ -103,8 +104,10 @@ public class CharacterMenu : MonoBehaviour {
         {
             //get down tonight 
         }
-        MemberManager m = new MemberManager();
-        m.LoadAvailable();
+
+        FullRaidList l = new FullRaidList();
+        l.Save();
+        l.Load();
 
         var panel = GameObject.Find("CharacterCard0");
         if (panel != null)  // make sure you actually found it!
