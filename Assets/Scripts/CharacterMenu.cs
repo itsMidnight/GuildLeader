@@ -9,7 +9,8 @@ public enum RaidReq
 {
     Star,
     Square,
-    Skull
+    Skull,
+    Moon
 }
 
 [Serializable]
@@ -56,6 +57,7 @@ public class MemberManager
 
     public static readonly int MaxRaidSize = 5;
     static readonly string GuildieList = "GuildMemberList.xml"; 
+
     public MemberManager()
     {
         this.currentMembers = new List<GuildMember>();
@@ -73,7 +75,36 @@ public class MemberManager
         return true;
     }
 
-    public bool LoadAvailable()
+    public int GetAvailableCount()
+    {
+        return this.all.allBuddies.Count;
+    }
+
+    public void MovetoGuild(int globalIndex)
+    {
+        GuildMember temp =  this.all.allBuddies[globalIndex];
+        this.all.allBuddies.RemoveAt(globalIndex);
+        this.currentMembers.Add(temp);
+    }
+
+    public void Gkick(GuildMember temp)
+    {
+        this.currentMembers.Remove(temp);
+    }
+
+    public void AddToRaid(GuildMember temp)
+    {
+        for (int i = 0; i < raidTeam.Length; i++)
+        {
+            if (this.raidTeam[i] != null)
+            {
+                this.raidTeam[i] = temp;
+                break;
+            }
+        }
+    }
+
+    public bool SaveList()
     {
         AvailableGuildies myObject = new AvailableGuildies();
         XmlSerializer mySerializer = new XmlSerializer(typeof(AvailableGuildies));
@@ -83,52 +114,38 @@ public class MemberManager
         return true;
     }
 
-    public bool SaveList()
+    public bool LoadAvailable()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(AvailableGuildies));
         FileStream fs = new FileStream(GuildieList, FileMode.OpenOrCreate);
-        AvailableGuildies po;
-        po = (AvailableGuildies)serializer.Deserialize(fs);
-        return true;
+        all = (AvailableGuildies)serializer.Deserialize(fs);
+        return (all != null && all.allBuddies.Count > 0);
     }
 }
 
 public class CharacterMenu : MonoBehaviour {
     public GameObject b;
     public Canvas canvas;
+    MemberManager manager; 
 
     void Start ()
     {
-        CharacterCardScript prefab = Resources.Load("Prefabs/YourPrefab") as CharacterCardScript;
-        if (prefab)
-        {
-            //get down tonight 
-        }
-
-        FullRaidList l = new FullRaidList();
-        l.Save();
-        l.Load();
-
-        var panel = GameObject.Find("CharacterCard0");
-        if (panel != null)  // make sure you actually found it!
-        {
-            GameObject a = (GameObject)Instantiate(b);
-            var test = a.GetComponent<RectTransform>();
-            a.transform.SetParent(panel.transform, false);
-        }
+        this.manager = new MemberManager();
+        this.manager.LoadAvailable();
     }
 	
-	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 
     void OnGUI()
     {
-        int i = 0; 
-        if(i<1)
-        {
+    }
 
-        }
+    void Add(int addIndex)
+    {
+        int count = manager.GetAvailableCount();
+        int index = UnityEngine.Random.Range(0,count);
+        manager.MovetoGuild(index);
     }
 }

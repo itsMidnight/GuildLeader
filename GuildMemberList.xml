@@ -8,10 +8,34 @@
       <Ability>Star</Ability>
     </GuildMembers>
     <GuildMembers>
-      <Name>MrPoopyButthole</Name>
+      <Name>Pam</Name>
       <FlavorText>Spicy</FlavorText>
-      <Description>No sad memories</Description>
+      <Description>Dunder Mifflin this is pam</Description>
       <Ability>Star</Ability>
+    </GuildMembers>
+	<GuildMembers>
+      <Name>MichaelScott</Name>
+      <FlavorText>Spicy</FlavorText>
+      <Description>That's what she said!</Description>
+      <Ability>Star</Ability>
+    </GuildMembers>
+	<GuildMembers>
+      <Name>Dwight</Name>
+      <FlavorText>Spicy</FlavorText>
+      <Description>Bears, Beets, Battlestar Galactica</Description>
+      <Ability>Square</Ability>
+    </GuildMembers>
+	<GuildMembers>
+      <Name>Jim</Name>
+      <FlavorText>Spicy</FlavorText>
+      <Description>Likes Pranks</Description>
+      <Ability>Moon</Ability>
+    </GuildMembers>
+	<GuildMembers>
+      <Name>Andy</Name>
+      <FlavorText>Spicy</FlavorText>
+      <Description>Roodoodoo</Description>
+      <Ability>Skull</Ability>
     </GuildMembers>
   </GuildMemberList>
 </AvailableGuildies>
