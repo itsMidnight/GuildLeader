@@ -13,18 +13,13 @@ public class Target : MonoBehaviour
         dictSpRend = new Dictionary<int, SpriteRenderer>();
         dictRb2d = new Dictionary<int, Rigidbody2D>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    
     void OnTriggerEnter2D(Collider2D coll)
     {
         var id = coll.GetInstanceID();
         var gObj = coll.gameObject;
         dictRb2d.Add(id, gObj.GetComponent<Rigidbody2D>());
-        dictSpRend.Add(id, gObj.GetComponent<SpriteRenderer>());
+        dictSpRend.Add(id, gObj.GetComponentsInChildren<SpriteRenderer>()[0]);
     }
 
     void OnTriggerStay2D(Collider2D coll)
