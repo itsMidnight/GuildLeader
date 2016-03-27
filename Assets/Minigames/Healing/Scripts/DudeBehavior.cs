@@ -21,6 +21,7 @@ public class DudeBehavior : MonoBehaviour
     protected int damagedCount = 0;
     protected bool isDead = false;
     protected static object isDeadLock = new object();
+    protected ProgressBar progressBar;
     // Difficulty 1-3
     // Output: win/lose
     // Input: difficulty (1-3)
@@ -30,8 +31,12 @@ public class DudeBehavior : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        progressBar = transform.FindChild("progressbar").FindChild("bar").GetComponent<ProgressBar>();
+
         startTime = Time.time;
         transform.localScale = new Vector3(scaleFactor, scaleFactor);
+        // Fill-up health bar by default.
+        progressBar.amountFilled = 1.0f;
     }
 
     // Update is called once per frame
@@ -113,7 +118,11 @@ public class DudeBehavior : MonoBehaviour
                 {
                     // Scale up/down by change amount.
                     float pctOfMax = currentHealth / maxHealth;
-                    StartCoroutine(LerpUp(pctOfMax * scaleFactor, 2.0f));
+                    progressBar.amountFilled = pctOfMax;
+                    //StartCoroutine(LerpUp(pctOfMax * scaleFactor, 2.0f));
+                    
+                    //var rend = healthBar.GetComponent<SpriteRenderer>();
+                    //rend.transform.localScale = new Vector3(pctOfMax, rend.transform.localScale.y);
                 }
             }
         }
