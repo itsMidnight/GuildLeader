@@ -16,12 +16,16 @@ public class RaidInstance
 
     [XmlArray("PreReqList"), XmlArrayItem(typeof(RaidReq), ElementName = "ReqType")]
     public RaidReq[] PreReqs { get; set; }
-  
+
+    [XmlIgnore]
+    public GuildMember[] SelectedGuildie;
+
     public RaidInstance()
     {
         this.Name = "Naxx";
         this.PreReqs = new RaidReq[MemberManager.MaxRaidSize];
         this.MinFame = 10;
+        this.SelectedGuildie = new GuildMember[MemberManager.MaxRaidSize];
     }
 }
 
@@ -52,25 +56,55 @@ public class FullRaidList
         return true;
     }
 
-    public bool Load()
+    public FullRaidList Load()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(FullRaidList));
         FileStream fs = new FileStream(RaidListFile, FileMode.OpenOrCreate);
         FullRaidList po;
         po = (FullRaidList)serializer.Deserialize(fs);
-        return true;
+        return po;
     }
 }
+
+
+public class RaidManager
+{
+    FullRaidList allRaids;
+
+    public static readonly int MaxRaidSize = 5;
+
+    public RaidManager()
+    {
+        this.allRaids = new FullRaidList(); 
+    }
+
+    public void Save()
+    {
+        this.allRaids.Save();
+    }
+
+    public void Load()
+    {
+        this.allRaids.Load();
+    }
+}
+
 
 public class RaidMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    // Copy pasted from the internet. Dont ask me how it works because I dont know
+    void Awake()
+    {
+
+    }
 }
