@@ -67,8 +67,19 @@ public class FullRaidList
         }
         return result;
     }
-}
 
+    public RaidInstance GetRaid(string name)
+    {
+        foreach(RaidInstance r in this.allPredefRaids)
+        {
+            if(r.Name == name)
+            {
+                return r;
+            }
+        }
+        return null;
+    }
+}
 
 public class RaidManager
 {
@@ -89,6 +100,15 @@ public class RaidManager
     public void Load()
     {
         this.allRaids = this.allRaids.Load();
+    }
+
+    public RaidInstance GetRaidByName(string name)
+    {
+        if(string.IsNullOrEmpty(name))
+        {
+            return null;
+        }
+        return allRaids.GetRaid(name);
     }
 }
 
