@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: a09eb9a759f8581418eae8b7c1ba1ce5
-timeCreated: 1459025495
+guid: e2e448f8849e3f841a7cf1b1d116f049
+timeCreated: 1459112187
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: healingwave_0
+    21300002: healingwave_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +40,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +51,45 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: healingwave_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 19}
+        - {x: -18, y: 16}
+        - {x: -18, y: 7}
+        - {x: -8, y: -19}
+        - {x: 7, y: -19}
+        - {x: 18, y: 4}
+        - {x: 18, y: 16}
+        - {x: 12, y: 19}
+    - name: healingwave_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 19}
+        - {x: -18, y: 16}
+        - {x: -18, y: 7}
+        - {x: -8, y: -19}
+        - {x: 7, y: -19}
+        - {x: 18, y: 4}
+        - {x: 18, y: 16}
+        - {x: 12, y: 19}
     outline: []
   spritePackingTag: 
   userData: 
