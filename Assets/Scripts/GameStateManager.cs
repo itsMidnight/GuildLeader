@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterCardScript : MonoBehaviour {
-    public string characterName; 
+public class GameStateManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

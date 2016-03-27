@@ -16,12 +16,16 @@ public class RaidInstance
 
     [XmlArray("PreReqList"), XmlArrayItem(typeof(RaidReq), ElementName = "ReqType")]
     public RaidReq[] PreReqs { get; set; }
-  
+
+    [XmlIgnore]
+    public GuildMember[] SelectedGuildie;
+
     public RaidInstance()
     {
         this.Name = "Naxx";
         this.PreReqs = new RaidReq[MemberManager.MaxRaidSize];
         this.MinFame = 10;
+        this.SelectedGuildie = new GuildMember[MemberManager.MaxRaidSize];
     }
 }
 
@@ -62,6 +66,28 @@ public class FullRaidList
     }
 }
 
+
+public class RaidManager
+{
+    FullRaidList allRaids;
+
+    public static readonly int MaxRaidSize = 5;
+
+    public RaidManager()
+    {
+        this.allRaids = new FullRaidList(); 
+    }
+
+    public void Save()
+    {
+        this.allRaids.Save();
+    }
+
+    public void Load()
+    {
+        this.allRaids.Load();
+    }
+}
 
 
 public class RaidMenu : MonoBehaviour {
