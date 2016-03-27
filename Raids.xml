@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FullRaidList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InstanceList>
+    <RaidInstances>
+      <Name>Naxx</Name>
+      <MinFame>10</MinFame>
+      <PreReqList>
+        <ReqType>Star</ReqType>
+        <ReqType>Star</ReqType>
+        <ReqType>Star</ReqType>
+        <ReqType>Star</ReqType>
+        <ReqType>Star</ReqType>
+      </PreReqList>
+    </RaidInstances>
+    <RaidInstances>
+      <Name>Naxx</Name>
+      <MinFame>10</MinFame>
+      <PreReqList>
+        <ReqType>Star</ReqType>
+        <ReqType>Star</ReqType>
+        <ReqType>Star</ReqType>
+        <ReqType>Star</ReqType>
+        <ReqType>Star</ReqType>
+      </PreReqList>
+    </RaidInstances>
+  </InstanceList>
+</FullRaidList>
