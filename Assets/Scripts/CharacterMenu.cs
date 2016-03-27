@@ -104,6 +104,17 @@ public class MemberManager
         }
     }
 
+    public void RemoveFromRaid(GuildMember temp)
+    {
+        for (int i = 0; i < raidTeam.Length; i++)
+        {
+            if (this.raidTeam[i].Name == temp.Name)
+            {
+                break;
+            }
+        }
+    }
+
     public bool SaveList()
     {
         AvailableGuildies myObject = new AvailableGuildies();
