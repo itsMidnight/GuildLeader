@@ -112,11 +112,23 @@ public class Character : MonoBehaviour
         return (Character.CharacterSkinTone)skinTones.GetValue((int)Random.Range(0, skinTones.Length - 0.00001f));
     }
 
+	public CharacterSkinTone GetSpecificSkinTone(int skinValue)
+	{
+		var skinTones = System.Enum.GetValues(typeof(Character.CharacterSkinTone));
+		return (Character.CharacterSkinTone)skinTones.GetValue(skinValue);
+	}
+
     public CharacterSuit GetRandomSuit()
     {
         var suits = System.Enum.GetValues(typeof(Character.CharacterSuit));
         return (Character.CharacterSuit)suits.GetValue((int)Random.Range(0, suits.Length - 0.00001f));
     }
+
+	public CharacterSuit GetSpecificSuit(int suitValue)
+	{
+		var suits = System.Enum.GetValues(typeof(Character.CharacterSuit));
+		return (Character.CharacterSuit)suits.GetValue(suitValue);
+	}
 
 	public CharacterWeapon GetRandomWeapon()
 	{
@@ -124,10 +136,22 @@ public class Character : MonoBehaviour
 		return (Character.CharacterWeapon)weapons.GetValue((int)Random.Range(0, weapons.Length - 0.00001f));
 	}
 
+	public CharacterWeapon GetSpecificWeapon(int weaponValue)
+	{
+		var weapons = System.Enum.GetValues(typeof(Character.CharacterWeapon));
+		return (Character.CharacterWeapon)weapons.GetValue(weaponValue);
+	}
+
 	public CharacterEyes GetRandomEyes()
 	{
 		var eyes = System.Enum.GetValues(typeof(Character.CharacterEyes));
 		return (Character.CharacterEyes)eyes.GetValue((int)Random.Range(0, eyes.Length - 0.00001f));
+	}
+
+	public CharacterEyes GetSpecificEyes(int eyeValue)
+	{
+		var eyes = System.Enum.GetValues(typeof(Character.CharacterEyes));
+		return (Character.CharacterEyes)eyes.GetValue(eyeValue);
 	}
 
     public void MoveAcrossScreen(int force)
