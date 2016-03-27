@@ -52,25 +52,33 @@ public class FullRaidList
         return true;
     }
 
-    public bool Load()
+    public FullRaidList Load()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(FullRaidList));
         FileStream fs = new FileStream(RaidListFile, FileMode.OpenOrCreate);
         FullRaidList po;
         po = (FullRaidList)serializer.Deserialize(fs);
-        return true;
+        return po;
     }
 }
+
+
 
 public class RaidMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    // Copy pasted from the internet. Dont ask me how it works because I dont know
+    void Awake()
+    {
+
+    }
 }

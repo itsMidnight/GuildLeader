@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b03cdc55b50fe6840899333906ec9b8d
-timeCreated: 1459036836
+timeCreated: 1459108940
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -33,6 +33,29 @@ TextureImporter:
     21300052: Guildies_26
     21300054: Guildies_27
     21300056: Guildies_28
+    21300058: Guildies_29
+    21300060: Guildies_30
+    21300062: Guildies_31
+    21300064: Guildies_32
+    21300066: Guildies_33
+    21300068: Guildies_34
+    21300070: Guildies_35
+    21300072: Guildies_36
+    21300074: Guildies_37
+    21300076: Guildies_38
+    21300078: Guildies_39
+    21300080: Guildies_40
+    21300082: Guildies_41
+    21300084: Guildies_42
+    21300086: Guildies_43
+    21300088: Guildies_44
+    21300090: Guildies_45
+    21300092: Guildies_46
+    21300094: Guildies_47
+    21300096: Guildies_48
+    21300098: Guildies_49
+    21300100: Guildies_50
+    21300102: Guildies_51
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,7 +78,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -3
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -83,319 +106,572 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 56
-        width: 8
+        y: 70
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_1
       rect:
         serializedVersion: 2
-        x: 10
-        y: 56
-        width: 8
+        x: 12
+        y: 70
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_2
       rect:
         serializedVersion: 2
-        x: 20
-        y: 56
-        width: 8
+        x: 24
+        y: 70
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_3
       rect:
         serializedVersion: 2
-        x: 30
-        y: 56
-        width: 8
+        x: 36
+        y: 70
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_4
       rect:
         serializedVersion: 2
-        x: 40
-        y: 56
-        width: 8
+        x: 48
+        y: 70
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 42
-        width: 8
+        y: 56
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_6
       rect:
         serializedVersion: 2
-        x: 10
-        y: 42
-        width: 8
+        x: 12
+        y: 56
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_7
       rect:
         serializedVersion: 2
-        x: 20
-        y: 42
-        width: 8
+        x: 24
+        y: 56
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_8
       rect:
         serializedVersion: 2
-        x: 30
-        y: 42
-        width: 8
+        x: 36
+        y: 56
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 28
-        width: 8
+        x: 48
+        y: 56
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_10
       rect:
         serializedVersion: 2
-        x: 10
-        y: 28
-        width: 8
+        x: 0
+        y: 42
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_11
       rect:
         serializedVersion: 2
-        x: 20
-        y: 28
-        width: 8
+        x: 12
+        y: 42
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_12
       rect:
         serializedVersion: 2
-        x: 30
-        y: 28
-        width: 8
+        x: 24
+        y: 42
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_13
       rect:
         serializedVersion: 2
-        x: 40
-        y: 28
-        width: 8
+        x: 36
+        y: 42
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_14
       rect:
         serializedVersion: 2
-        x: 50
-        y: 28
-        width: 8
+        x: 48
+        y: 42
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_15
       rect:
         serializedVersion: 2
-        x: 30
-        y: 14
-        width: 8
+        x: 60
+        y: 42
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_16
       rect:
         serializedVersion: 2
-        x: 40
-        y: 14
-        width: 8
+        x: 0
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_17
       rect:
         serializedVersion: 2
-        x: 50
-        y: 14
-        width: 8
+        x: 12
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 8
+        x: 24
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_19
       rect:
         serializedVersion: 2
-        x: 10
-        y: 0
-        width: 8
+        x: 36
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_20
       rect:
         serializedVersion: 2
-        x: 20
-        y: 0
-        width: 8
+        x: 48
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_21
       rect:
         serializedVersion: 2
-        x: 30
-        y: 0
-        width: 8
+        x: 60
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_22
       rect:
         serializedVersion: 2
-        x: 40
-        y: 0
-        width: 8
+        x: 72
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_23
       rect:
         serializedVersion: 2
-        x: 50
-        y: 0
-        width: 8
+        x: 84
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_24
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0
-        width: 8
+        x: 96
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_25
       rect:
         serializedVersion: 2
-        x: 70
-        y: 0
-        width: 8
+        x: 108
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_26
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 8
+        x: 120
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_27
       rect:
         serializedVersion: 2
-        x: 90
-        y: 0
-        width: 8
+        x: 132
+        y: 28
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Guildies_28
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 8
+        x: 0
+        y: 14
+        width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_29
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_30
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_31
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_32
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_33
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_34
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_35
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_36
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_37
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_38
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_39
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 14
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_41
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_42
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_43
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_44
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_45
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_46
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_47
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_48
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_49
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_50
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Guildies_51
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []
