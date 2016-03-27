@@ -34,22 +34,22 @@ public class LevelStateManager : MonoBehaviour {
 
     public void StartLevel()
     {
-        instance.result = new RaidData();
+        result = new RaidData();
     }
 
     public void EndLevel(RaidData ret)
     {
-        instance.result = ret;
+        result = ret;
     }
 
     public RaidData GetResults()
     {
-        return instance.result; 
+        return result; 
     }
 
     public void ClearResult()
     {
-        instance.result = null;
+        result = null;
     }
 
     // Use this for initialization

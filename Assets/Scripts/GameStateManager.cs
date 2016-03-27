@@ -3,8 +3,8 @@ using System.Collections;
 
 public class GameDataManager
 {
-    RaidManager raids;
-    MemberManager members;
+    public RaidManager raids;
+    public MemberManager members;
     public GameDataManager()
     {
 
@@ -41,7 +41,8 @@ public class GameStateManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+		manager.raids.Load ();
+		manager.members.LoadAvailable ();
     }
 
     // Update is called once per frame

@@ -19,7 +19,7 @@ public class PanelController : MonoBehaviour
 		Debug.Log ("start");
 
 
-		sprites = Resources.LoadAll<Sprite>("Sprites");
+		sprites = Resources.LoadAll<Sprite>("Sprites/RaidIcons");
 
 
 		containerRectTransform = gameObject.GetComponent<RectTransform>();
