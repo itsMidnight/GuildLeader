@@ -14,17 +14,6 @@ public class Respawn : MonoBehaviour
         Lock = new object();
     }
 
-    void Update()
-    {
-
-    }
-
-    IEnumerator RandomWait()
-    {
-        yield return new WaitForSeconds(Random.Range(0, 3));
-    }
-
-
     void OnTriggerExit2D(Collider2D coll)
     {
         var nme = coll.GetComponent<Enemy>();
@@ -32,11 +21,6 @@ public class Respawn : MonoBehaviour
         {
             coll.enabled = false;
             Instantiate<GameObject>(enemy);
-            if ((int)Random.Range(0, 5) == 1)
-            {
-                RandomWait();
-                Instantiate<GameObject>(enemy);
-            }
             Destroy(coll.gameObject);
         }
 

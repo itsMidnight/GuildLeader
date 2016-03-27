@@ -36,7 +36,8 @@ public class Target : MonoBehaviour
             {
                 dictSpRend[id].color = Color.red;
                 dictRb2d[id].gravityScale = 6.5F;
-                dictRb2d[id].AddForce(new Vector2(0, 100));
+                dictRb2d[id].AddForce(new Vector2(0, 100 * Random.Range(0.8f,2.2f)));
+                dictRb2d[id].AddTorque(10 * Random.Range(2, 3), ForceMode2D.Force);
                 dictRb2d.Remove(id);
                 dictSpRend.Remove(id);
             }

@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         spRend = GetComponent<SpriteRenderer>();
-        var multiplier = Random.Range(0.8f, 1.2f);
+        var multiplier = Random.Range(0.5f, 2f);
         rb2d.AddForce(new Vector2(force * multiplier, 0));
     }
 }
