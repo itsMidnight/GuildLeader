@@ -13,7 +13,11 @@ public class PanelController : MonoBehaviour
 
 	void Start () 
 	{
+		Debug.Log ("start");
 		containerRectTransform = gameObject.GetComponent<RectTransform>();
+		for (int i = 0; i < 5; i++) {
+			AddCard ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -33,10 +37,12 @@ public class PanelController : MonoBehaviour
 		float ratio = width / rectTrans.rect.width;
 		float height = rectTrans.rect.height * ratio;
 
-
-
 		//Populate Raid Info Here
 		newCard.name = "Temp Raid Name";
+		GameObject IconObj = newCard.transform.FindChild("Icon").gameObject;
+		Image iconImg = IconObj.GetComponent<Image> ();
+		iconImg.sprite = Resources.Load<Sprite>("Raid_Icons_1");
+
 
 		float x = 0;
 		float y = 0 - height * num_cards;
@@ -46,6 +52,7 @@ public class PanelController : MonoBehaviour
 		x = rectTrans.offsetMin.x + width;
 		y = rectTrans.offsetMin.y + height;
 		rectTrans.offsetMax = new Vector2(x, y);
+		rectTrans.localScale = new Vector3(1, 1, 1);
 
 		num_cards++;
 	}
