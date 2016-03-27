@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 guid: 401ac2f2ac3db434ba9f4be5754a7745
-timeCreated: 1459100487
+timeCreated: 1459104105
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Raid_Icons_0
+    21300002: Raid_Icons_1
+    21300004: Raid_Icons_2
+    21300006: Raid_Icons_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +30,11 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +42,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +53,103 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Raid_Icons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1796
+        width: 204
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 37, y: 102}
+        - {x: -38, y: 102}
+        - {x: -85, y: 75}
+        - {x: -102, y: 38}
+        - {x: -102, y: -34}
+        - {x: -86, y: -67}
+        - {x: -73, y: -83}
+        - {x: -36, y: -102}
+        - {x: 39, y: -102}
+        - {x: 60, y: -99}
+        - {x: 102, y: -46}
+        - {x: 102, y: 37}
+        - {x: 75, y: 86}
+    - name: Raid_Icons_1
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 1796
+        width: 204
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 37, y: 102}
+        - {x: -38, y: 102}
+        - {x: -85, y: 75}
+        - {x: -102, y: 38}
+        - {x: -102, y: -34}
+        - {x: -86, y: -67}
+        - {x: -73, y: -83}
+        - {x: -36, y: -102}
+        - {x: 39, y: -102}
+        - {x: 60, y: -99}
+        - {x: 102, y: -46}
+        - {x: 102, y: 37}
+        - {x: 75, y: 86}
+    - name: Raid_Icons_2
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1796
+        width: 204
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 83, y: 73}
+        - {x: 69, y: 100}
+        - {x: 53, y: 102}
+        - {x: -50, y: 102}
+        - {x: -59, y: 96}
+        - {x: -102, y: 45}
+        - {x: -102, y: -42}
+        - {x: -75, y: -86}
+        - {x: -38, y: -102}
+        - {x: 39, y: -102}
+        - {x: 83, y: -73}
+        - {x: 102, y: -30}
+        - {x: 102, y: 35}
+    - name: Raid_Icons_3
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 1796
+        width: 204
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 37, y: 102}
+        - {x: -38, y: 102}
+        - {x: -85, y: 75}
+        - {x: -102, y: 38}
+        - {x: -102, y: -34}
+        - {x: -86, y: -67}
+        - {x: -73, y: -83}
+        - {x: -36, y: -102}
+        - {x: 39, y: -102}
+        - {x: 60, y: -99}
+        - {x: 102, y: -46}
+        - {x: 102, y: 37}
+        - {x: 75, y: 86}
     outline: []
   spritePackingTag: 
   userData: 
