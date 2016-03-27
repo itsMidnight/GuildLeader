@@ -16,13 +16,10 @@ public class Respawn : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D coll)
     {
-        var nme = coll.GetComponent<Enemy>();
-        lock (nme)
-        {
-            coll.enabled = false;
-            Instantiate<GameObject>(enemy);
-            Destroy(coll.gameObject);
-        }
-
+        coll.enabled = false;
+        var gObj = Instantiate<GameObject>(enemy);
+        var nme = gObj.GetComponent<Enemy>();
+        nme.Go();
+        Destroy(coll.gameObject);
     }
 }
