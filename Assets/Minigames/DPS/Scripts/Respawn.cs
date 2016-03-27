@@ -14,7 +14,7 @@ public class Respawn : MonoBehaviour
         Lock = new object();
     }
 
-    void OnTriggerExit2D(Collider2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         coll.enabled = false;
         var gObj = Instantiate<GameObject>(enemy);

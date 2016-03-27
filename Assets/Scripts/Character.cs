@@ -132,7 +132,7 @@ public class Character : MonoBehaviour
 
     public void MoveAcrossScreen(int force)
     {
-        var multiplier = Random.Range(0.5f, 2f);
+        var multiplier = Random.Range(0.75f, 1.5f);
         rigidBody.AddForce(new Vector2(force * multiplier, 0));
     }
 
