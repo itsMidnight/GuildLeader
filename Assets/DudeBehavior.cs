@@ -5,7 +5,7 @@ public class DudeBehavior : MonoBehaviour {
     public float maxHealth = 100f;
     public float currentHealth = 20f;
     // How much this dude scales.
-    public float scaleFactor = 5f;
+    protected float scaleFactor = 10f;
     // How fast this dude moves.
     public float baseSpeed = 10;
 
@@ -18,7 +18,8 @@ public class DudeBehavior : MonoBehaviour {
     private float startTime;
     protected int healCount = 0;
     protected int damagedCount = 0;
-
+    protected bool isDead = false;
+    protected static object isDeadLock = new object();
     // Difficutly 1-3
     // Output: win/lose
     // Input: difficulty (1-3)
@@ -33,9 +34,11 @@ public class DudeBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        if (isDead) return;
+
         updateCounter++;
         // Depending on health, scale x,y of dude
-        if (updateCounter % 125 == 0)
+        if (updateCounter % 30 == 0)
         {
             if (0.5 < Random.Range(0f, 1f))
             {
@@ -47,7 +50,10 @@ public class DudeBehavior : MonoBehaviour {
             }
             
             updateCounter = 0;
-        }        
+        }
+
+        Move(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(5f, 15f));
+
     }
 
     public void Healed(int healAmount = 10)
@@ -61,6 +67,18 @@ public class DudeBehavior : MonoBehaviour {
         ChangeHealth(healAmount);
     }
 
+    public void Dead()
+    {
+        sprite.color = Color.red;
+        isDead = true;
+    }
+
+    public void Move(float x, float y, float force)
+    {
+        //sprite.transform.Translate(new Vector3(x, y));
+        body.AddForce(force * new Vector2(x, y) * speed);
+    }
+
     public void Damaged(int damageAmount = 10)
     {
         Debug.Assert(damageAmount > 0);
@@ -72,31 +90,37 @@ public class DudeBehavior : MonoBehaviour {
 
     protected void ChangeHealth(float changeAmt)
     {
-        currentHealth += changeAmt;
-        currentHealth = currentHealth > maxHealth ? maxHealth : currentHealth;
-        currentHealth = currentHealth < 0 ? 0 : currentHealth;
+        lock (isDeadLock)
+        {
+            if (!isDead)
+            {
+                currentHealth += changeAmt;
+                currentHealth = currentHealth > maxHealth ? maxHealth : currentHealth;
+                currentHealth = currentHealth < 0 ? 0 : currentHealth;
 
-        if (currentHealth == 0)
-        {
-            // Dead! FUCK!
-        }
-        else if (currentHealth == maxHealth)
-        {
-            // Full health! WOO
-            // TODO: Do something cool
-        }
-        else
-        {
-            // Scale up/down by change amount.
-            float pctOfMax = currentHealth / maxHealth;
-            StartCoroutine(LerpUp(pctOfMax * scaleFactor, 2.0f));
+                if (currentHealth == 0)
+                {
+                    // Dead! FUCK!
+                }
+                else if (currentHealth == maxHealth)
+                {
+                    // Full health! WOO
+                    // TODO: Do something cool
+                }
+                else
+                {
+                    // Scale up/down by change amount.
+                    float pctOfMax = currentHealth / maxHealth;
+                    StartCoroutine(LerpUp(pctOfMax * scaleFactor, 2.0f));
+                }
+            }
         }
     }
 
     IEnumerator LerpUp(float growthScale, float timeScale)
     {
         Vector3 initialScale = transform.localScale;                
-        Vector3 finalScale = new Vector3(growthScale , growthScale , timeScale);
+        Vector3 finalScale = new Vector3(growthScale, growthScale, timeScale);
         float progress = 0;
         while (progress <= 1)
         {
@@ -104,6 +128,7 @@ public class DudeBehavior : MonoBehaviour {
             progress += Time.deltaTime * timeScale;
             yield return null;
         }
+
         transform.localScale = finalScale;
     }
 }
