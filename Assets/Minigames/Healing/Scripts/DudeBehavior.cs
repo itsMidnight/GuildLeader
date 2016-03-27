@@ -1,27 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DudeBehavior : MonoBehaviour
+public class DudeBehavior : Character
 {
     public float maxHealth = 100f;
     public float currentHealth = 20f;
-    // How much this dude scales.
-    protected float scaleFactor = 10f;
-    // How fast this dude moves.
-    public float baseSpeed = 10;
-
-    protected Rigidbody2D body;
-    protected SpriteRenderer sprite;
-    private int updateCounter = 0;
     public Transform startMarker;
     public Transform endMarker;
     public float speed = 1.0F;
-    private float startTime;
+
+    // How fast this dude moves.
+    public float baseSpeed = 2f;
+
+    // How much this dude scales.
+    protected float scaleFactor = 10f;
     protected int healCount = 0;
     protected int damagedCount = 0;
     protected bool isDead = false;
     protected static object isDeadLock = new object();
     protected ProgressBar progressBar;
+
+    // Change this with increase in difficulty. 1.0 is easy mode.
+    protected float difficultyModifier = 1.0f;
+
+    private int updateCounter = 0;
+    private float startTime;
+
     // Difficulty 1-3
     // Output: win/lose
     // Input: difficulty (1-3)
@@ -30,13 +34,24 @@ public class DudeBehavior : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
+        Init();
+    }
+
+    public override void Init()
+    {
+        base.Init();
+
+        difficultyModifier = Random.Range(1.0f, 10.0f);
+
+        rigidBody = GetComponent<Rigidbody2D>();
         progressBar = transform.FindChild("progressbar").FindChild("bar").GetComponent<ProgressBar>();
 
         startTime = Time.time;
         transform.localScale = new Vector3(scaleFactor, scaleFactor);
         // Fill-up health bar by default.
         progressBar.amountFilled = 1.0f;
+
+        base.InitializeLookAndFeel(GetRandomSkinTone(), GetRandomSuit(), GetRandomWeapon(), GetRandomEyes());
     }
 
     // Update is called once per frame
@@ -76,14 +91,13 @@ public class DudeBehavior : MonoBehaviour
 
     public void Dead()
     {
-        sprite.color = Color.red;
         isDead = true;
     }
 
     public void Move(float x, float y, float force)
     {
         //sprite.transform.Translate(new Vector3(x, y));
-        body.AddForce(force * new Vector2(x, y) * speed);
+        rigidBody.AddForce(force * new Vector2(x, y) * Time.deltaTime * baseSpeed * difficultyModifier);
     }
 
     public void Damaged(int damageAmount = 10)
