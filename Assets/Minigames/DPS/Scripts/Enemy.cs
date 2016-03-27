@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     {
         var character = GetComponentInChildren<Character>();
         character.Init();
-        character.InitializeLookAndFeel(character.GetRandomSkinTone(), character.GetRandomSuit());
+		character.InitializeLookAndFeel(character.GetRandomSkinTone(), character.GetRandomSuit(), character.GetRandomWeapon(), character.GetRandomEyes());
         character.MoveAcrossScreen(Force);
     }
 }
