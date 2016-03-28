@@ -75,15 +75,15 @@ public class Character : MonoBehaviour
 
 
     public int movementForce;
-    private Rigidbody2D rigidBody;
+    protected Rigidbody2D rigidBody;
 
-    private Sprite[] characterSprites;
-    private SpriteRenderer skin;
-    private SpriteRenderer suit;
-	private SpriteRenderer weapon;
-	private SpriteRenderer eyes;
+    protected Sprite[] characterSprites;
+    protected SpriteRenderer skin;
+    protected SpriteRenderer suit;
+    protected SpriteRenderer weapon;
+    protected SpriteRenderer eyes;
 
-    public void Init()
+    public virtual void Init()
     {
         var spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 		characterSprites = Resources.LoadAll<Sprite>("Sprites/Guildies");
@@ -156,7 +156,7 @@ public class Character : MonoBehaviour
 
     public void MoveAcrossScreen(int force)
     {
-        var multiplier = Random.Range(0.5f, 2f);
+        var multiplier = Random.Range(0.75f, 1.5f);
         rigidBody.AddForce(new Vector2(force * multiplier, 0));
     }
 

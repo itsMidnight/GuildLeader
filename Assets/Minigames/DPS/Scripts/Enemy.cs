@@ -5,10 +5,13 @@ public class Enemy : MonoBehaviour
 {
     public int Force;
     public bool First;
+    private DPSGameStateManager gsManager;
 
     // Use this for initialization
     void Start()
     {
+        gsManager = FindObjectOfType<DPSGameStateManager>();
+        gsManager.EnemiesSeen++;
         if (First)
         {
             Go();

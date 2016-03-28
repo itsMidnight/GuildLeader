@@ -16,7 +16,7 @@ public class HealerBehavior : MonoBehaviour {
     public float baseSpeed = 10;
     protected HealerDirection direction;
     public GameObject healSpell;
-
+    public AudioSource healSound;
 	// Use this for initialization
 
 	void Start ()
@@ -24,6 +24,7 @@ public class HealerBehavior : MonoBehaviour {
         transform.localScale = new Vector3(scaleFactor, scaleFactor);
         sprite = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
+        healSound = GetComponent<AudioSource>();
         direction = HealerDirection.Stationary;
     }
 
@@ -35,7 +36,8 @@ public class HealerBehavior : MonoBehaviour {
         //rectTrans = new_card.GetComponent<RectTransform>();
 
         // Speed of spell is 5 (shooting upward only)
-        rb.velocity = new Vector2(0f, 30.0f);
+        rb.velocity = new Vector2(0f, 15.0f);
+        healSound.Play();
     }
 
     // Update is called once per frame
