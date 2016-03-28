@@ -4,13 +4,16 @@ using System.Collections.Generic;
 public class Target : MonoBehaviour
 {
     private Dictionary<int, Character> characterDict;
+    private bool wasHit;
+    private DPSGameStateManager gameStateManager;
 
     // Use this for initialization
     void Start()
     {
         characterDict = new Dictionary<int, Character>();
+        gameStateManager = GetComponentInParent<DPSGameStateManager>();
     }
-    
+
     void OnTriggerEnter2D(Collider2D coll)
     {
         var id = coll.GetInstanceID();
@@ -26,6 +29,7 @@ public class Target : MonoBehaviour
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
                 characterDict[id].RegisterDirectHit();
+                wasHit = true;
             }
         }
     }
@@ -35,6 +39,12 @@ public class Target : MonoBehaviour
         if (characterDict.ContainsKey(id))
         {
             characterDict.Remove(id);
+        }
+
+        gameStateManager.EnemiesSeen += 1;
+        if(wasHit)
+        {
+            gameStateManager.Score += 1;
         }
     }
 }
