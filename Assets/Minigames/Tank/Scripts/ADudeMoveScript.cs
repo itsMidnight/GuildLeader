@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public class ADudeMoveScript : MonoBehaviour {
 
 	private Rigidbody2D rb2d;
-	private bool dead = false;
+	public bool dead = false;
+	public bool gameOver = false;
 
 	public float baseSpeed;
+
 
 
 	// Use this for initialization
@@ -16,39 +19,44 @@ public class ADudeMoveScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//if (dead == true) {
-		//	//end game and pass back fail (0)
-		//}
 
-		//Debug.Log ("Horizontal: " + (Input.GetAxis ("Mouse X")));
-		//Debug.Log ("Vertical: " + (Input.GetAxis ("Mouse Y")));
 
-		rb2d.AddForce (new Vector2 (Input.GetAxis ("Mouse X") * baseSpeed, 0));
-		rb2d.AddForce (new Vector2 (0, Input.GetAxis ("Mouse Y") * baseSpeed));
+		rb2d.AddForce (new Vector2 (Input.GetAxis ("Horizontal") * baseSpeed, 0));
+		rb2d.AddForce (new Vector2 (0, Input.GetAxis ("Vertical") * baseSpeed));
 
-		if (dead) {
-			
-		}
-		if (!dead) {
-		}
+		//rb2d.AddForce (new Vector2 (Input.GetAxis ("Mouse X") * baseSpeed, 0));
+		//rb2d.AddForce (new Vector2 (0, Input.GetAxis ("Mouse Y") * baseSpeed));
+
+
 
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.name == "Goal") {
+		if (col.name == "Goal" || col.name == "mazeEdge") {
 			dead = false;
-			Debug.Log ("Not dead!");
 		} else {
 			dead = true;
-			//Debug.Log ("You're dead!");
 		}
+	
+		LevelStateManager m = GameObject.FindGameObjectWithTag("LevelMgr").GetComponent<LevelStateManager>();
+		RaidData temp = new RaidData();
+		temp.isWin = !dead;
+		m.EndLevel(temp);
+		//SceneManager.LoadScene(SelectAMazeLevel.gameReturnLevel);
+
 	}
 
 	void OnTriggerStay2D(Collider2D col)
 	{
-		dead = true;
-		//Debug.Log ("You're dead!");
+		if (col.name == "Goal" || col.name == "mazeEdge") {
+			dead = false;
+			//Debug.Log ("Not dead!");
+		} else {
+			dead = true;
+
+		}
+
 	}
 
 
