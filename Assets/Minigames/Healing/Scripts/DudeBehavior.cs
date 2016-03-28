@@ -7,10 +7,9 @@ public class DudeBehavior : Character
     public float currentHealth = 20f;
     public Transform startMarker;
     public Transform endMarker;
-    public float speed = 1.0F;
 
     // How fast this dude moves.
-    public float baseSpeed = 2f;
+    public float baseSpeed = 1f;
 
     // How much this dude scales.
     protected float scaleFactor = 10f;
@@ -25,11 +24,13 @@ public class DudeBehavior : Character
 
     private int updateCounter = 0;
     private float startTime;
-
+    public delegate void DeathEventHandler();
     // Difficulty 1-3
     // Output: win/lose
     // Input: difficulty (1-3)
     // Optional Input: 
+
+    public event DeathEventHandler CharacterDied;
 
     // Use this for initialization
     void Start()
@@ -41,7 +42,7 @@ public class DudeBehavior : Character
     {
         base.Init();
 
-        difficultyModifier = Random.Range(1.0f, 10.0f);
+        difficultyModifier = Random.Range(1.0f, 1.0f);
 
         rigidBody = GetComponent<Rigidbody2D>();
         progressBar = transform.FindChild("progressbar").FindChild("bar").GetComponent<ProgressBar>();
@@ -69,7 +70,7 @@ public class DudeBehavior : Character
             }
             else
             {
-                Damaged();
+                //Damaged();
             }
 
             updateCounter = 0;
