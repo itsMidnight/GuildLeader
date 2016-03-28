@@ -73,6 +73,8 @@ public class Character : MonoBehaviour
 		Baby3 = 51
     }
 
+    // Unique ID for this character, used to track throughout game.
+    public System.Guid CharacterId;
 
     public int movementForce;
     protected Rigidbody2D rigidBody;
@@ -82,6 +84,11 @@ public class Character : MonoBehaviour
     protected SpriteRenderer suit;
     protected SpriteRenderer weapon;
     protected SpriteRenderer eyes;
+
+    public Character()
+    {
+        CharacterId = System.Guid.NewGuid();
+    }
 
     public virtual void Init()
     {

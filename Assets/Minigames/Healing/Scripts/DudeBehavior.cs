@@ -24,7 +24,7 @@ public class DudeBehavior : Character
 
     private int updateCounter = 0;
     private float startTime;
-    public delegate void DeathEventHandler();
+    public delegate void DeathEventHandler(DudeBehavior dude);
     // Difficulty 1-3
     // Output: win/lose
     // Input: difficulty (1-3)
@@ -32,12 +32,31 @@ public class DudeBehavior : Character
 
     public event DeathEventHandler CharacterDied;
 
+    public bool IsDead
+    {
+        get
+        {
+            lock(isDeadLock)
+            {
+                Debug.Log("isDead: " + isDead);
+                return isDead;
+            }
+        }
+        set
+        {
+            lock (isDeadLock)
+            {
+                isDead = value;
+            }
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
         Init();
     }
-
+    
     public override void Init()
     {
         base.Init();
@@ -58,8 +77,7 @@ public class DudeBehavior : Character
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isDead) return;
-
+        // Uncomment for random movement for testing.
         updateCounter++;
         // Depending on health, scale x,y of dude
         if (updateCounter % 30 == 0)
@@ -70,13 +88,20 @@ public class DudeBehavior : Character
             }
             else
             {
-                //Damaged();
+                Damaged();
             }
 
             updateCounter = 0;
         }
 
-        Move(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(5f, 15f));
+        ////if (updateCounter % 10 == 0)
+        ////{
+        ////    Move(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(5f, 15f));
+        ////}
+
+
+        // Draw health bar
+        progressBar.amountFilled = currentHealth / maxHealth;
     }
 
     public void Healed(int healAmount = 10)
@@ -92,53 +117,59 @@ public class DudeBehavior : Character
 
     public void Dead()
     {
-        isDead = true;
+        IsDead = true;
+        Debug.Log("Dead!");
+        rigidBody.velocity = Vector3.zero;
+        progressBar.enabled = false;
+        var deathHandlerCopy = CharacterDied;
+        if (null != deathHandlerCopy)
+        {
+            deathHandlerCopy.Invoke(this);
+        }
     }
 
     public void Move(float x, float y, float force)
     {
-        //sprite.transform.Translate(new Vector3(x, y));
-        rigidBody.AddForce(force * new Vector2(x, y) * Time.deltaTime * baseSpeed * difficultyModifier);
+        // Can't move if dead, if you want to reposition this dead character, be explicit.
+        if (!IsDead)
+        {
+            rigidBody.AddForce(force * new Vector2(x, y) * Time.deltaTime * baseSpeed * difficultyModifier);
+        }
     }
 
-    public void Damaged(int damageAmount = 10)
+    public void Damaged(int damageAmount = 5)
     {
         Debug.Assert(damageAmount > 0);
-
         Debug.Log("Damaged");
-        // Fuck, I got hit, shrink!
         ChangeHealth(-damageAmount);
     }
 
-    protected void ChangeHealth(float changeAmt)
+    protected void ChangeHealth(float changeAmt, bool ignoreDeath = false)
     {
-        lock (isDeadLock)
+        // Health can't change if dead unless overridden.
+        if (!IsDead || ignoreDeath)
         {
-            if (!isDead)
-            {
-                currentHealth += changeAmt;
-                currentHealth = currentHealth > maxHealth ? maxHealth : currentHealth;
-                currentHealth = currentHealth < 0 ? 0 : currentHealth;
+            currentHealth += changeAmt;
+            currentHealth = currentHealth > maxHealth ? maxHealth : currentHealth;
+            currentHealth = currentHealth < 0 ? 0 : currentHealth;
 
-                if (currentHealth == 0)
-                {
-                    // Dead! FUCK!
-                }
-                else if (currentHealth == maxHealth)
-                {
-                    // Full health! WOO
-                    // TODO: Do something cool
-                }
-                else
-                {
-                    // Scale up/down by change amount.
-                    float pctOfMax = currentHealth / maxHealth;
-                    progressBar.amountFilled = pctOfMax;
-                    //StartCoroutine(LerpUp(pctOfMax * scaleFactor, 2.0f));
-                    
-                    //var rend = healthBar.GetComponent<SpriteRenderer>();
-                    //rend.transform.localScale = new Vector3(pctOfMax, rend.transform.localScale.y);
-                }
+            if (currentHealth <= 0)
+            {                
+                // Dead! FUCK!
+                Dead();
+            }
+            else if (currentHealth >= maxHealth)
+            {
+                // Full health! WOO
+                // TODO: Do something cool
+            }
+            else
+            {
+                
+                //StartCoroutine(LerpUp(pctOfMax * scaleFactor, 2.0f));
+
+                //var rend = healthBar.GetComponent<SpriteRenderer>();
+                //rend.transform.localScale = new Vector3(pctOfMax, rend.transform.localScale.y);
             }
         }
     }
