@@ -4,6 +4,7 @@
     <RaidInstances>
       <Name>Naxx</Name>
       <MinFame>10</MinFame>
+      <RaidClass>Tank</RaidClass>
       <PreReqList>
         <ReqType>Star</ReqType>
         <ReqType>Star</ReqType>
@@ -15,6 +16,7 @@
     <RaidInstances>
       <Name>Naxx</Name>
       <MinFame>10</MinFame>
+      <RaidClass>Tank</RaidClass>
       <PreReqList>
         <ReqType>Star</ReqType>
         <ReqType>Star</ReqType>

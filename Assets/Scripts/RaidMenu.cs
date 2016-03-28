@@ -5,6 +5,13 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Collections.Generic;
 
+public enum RaidType
+{
+    Tank, 
+    DPS, 
+    Heals
+}
+
 [Serializable]
 public class RaidInstance
 {
@@ -14,18 +21,16 @@ public class RaidInstance
 
     public int MinFame { get; set; }
 
+    public RaidType RaidClass { get; set; }
+
     [XmlArray("PreReqList"), XmlArrayItem(typeof(RaidReq), ElementName = "ReqType")]
     public RaidReq[] PreReqs { get; set; }
-
-    [XmlIgnore]
-    public GuildMember[] SelectedGuildie;
 
     public RaidInstance()
     {
         this.Name = "Naxx";
         this.PreReqs = new RaidReq[MemberManager.MaxRaidSize];
         this.MinFame = 10;
-        this.SelectedGuildie = new GuildMember[MemberManager.MaxRaidSize];
     }
 }
 
@@ -36,22 +41,18 @@ public class FullRaidList
     private static readonly string RaidListFile = "Raids.xml";
 
     [XmlArray("InstanceList"), XmlArrayItem(typeof(RaidInstance), ElementName = "RaidInstances")]
-    public List<RaidInstance> allBuddies { get; set; }
+    public List<RaidInstance> allPredefRaids { get; set; }
 
     public FullRaidList()
     {
-        this.allBuddies = new List<RaidInstance>();
-        this.allBuddies.Add(new RaidInstance());
-        this.allBuddies.Add(new RaidInstance());
+        this.allPredefRaids = new List<RaidInstance>();
     }
-
 
     public bool Save()
     {
-        FullRaidList myObject = new FullRaidList();
         XmlSerializer mySerializer = new XmlSerializer(typeof(FullRaidList));
         StreamWriter myWriter = new StreamWriter(RaidListFile);
-        mySerializer.Serialize(myWriter, myObject);
+        mySerializer.Serialize(myWriter, this);
         myWriter.Close();
         return true;
     }
@@ -59,13 +60,26 @@ public class FullRaidList
     public FullRaidList Load()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(FullRaidList));
-        FileStream fs = new FileStream(RaidListFile, FileMode.OpenOrCreate);
-        FullRaidList po;
-        po = (FullRaidList)serializer.Deserialize(fs);
-        return po;
+        FullRaidList result; 
+        using (FileStream fs = new FileStream(RaidListFile, FileMode.OpenOrCreate))
+        {
+            result = (FullRaidList)serializer.Deserialize(fs);
+        }
+        return result;
+    }
+
+    public RaidInstance GetRaid(string name)
+    {
+        foreach(RaidInstance r in this.allPredefRaids)
+        {
+            if(r.Name == name)
+            {
+                return r;
+            }
+        }
+        return null;
     }
 }
-
 
 public class RaidManager
 {
@@ -85,7 +99,16 @@ public class RaidManager
 
     public void Load()
     {
-        this.allRaids.Load();
+        this.allRaids = this.allRaids.Load();
+    }
+
+    public RaidInstance GetRaidByName(string name)
+    {
+        if(string.IsNullOrEmpty(name))
+        {
+            return null;
+        }
+        return allRaids.GetRaid(name);
     }
 }
 
@@ -101,10 +124,4 @@ public class RaidMenu : MonoBehaviour {
 	void Update () {
 	
 	}
-
-    // Copy pasted from the internet. Dont ask me how it works because I dont know
-    void Awake()
-    {
-
-    }
 }
