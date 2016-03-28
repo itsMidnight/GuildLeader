@@ -3,8 +3,12 @@ using System.Collections;
 
 public class Bar2Rotate : MonoBehaviour {
 
+	public GameObject[] fireball;
+
 	// Use this for initialization
 	void Start () {
+
+
 	
 	}
 	
