@@ -7,10 +7,14 @@ using System;
 
 public enum RaidReq
 {
-    Star,
-    Square,
-    Skull,
-    Moon
+	Star,
+	Square,
+	Skull,
+	Moon,
+	X,
+	Diamond,
+	Triangle,
+	Circle
 }
 
 [Serializable]
