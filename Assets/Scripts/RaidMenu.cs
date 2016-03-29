@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 public enum RaidType
 {
-    Tank, 
-    DPS, 
-    Heals
+    Tank = 1, 
+    DPS = 0, 
+    Heals = 2
 }
 
 [Serializable]
@@ -109,6 +109,11 @@ public class RaidManager
             return null;
         }
         return allRaids.GetRaid(name);
+    }
+
+    public List<RaidInstance> GetAllRaids()
+    {
+        return allRaids.allPredefRaids;
     }
 }
 
