@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PanelController : MonoBehaviour 
 {
+    GameDataManager GM;
 	public GameObject Card;
 	public float xPadding = 2f;
 	private int num_cards = 1;
 	private GameObject[] Cards;
-	Sprite [] sprites;
-	string[] names1 = {"Dark", "Haunted", "Eerie", "Blasted", "Forgotten", "Dragon's", "Mage's"};
+    Sprite[] raid_icons;
+    Sprite[] req_icons;
+    Sprite[] characterSprites;
+    string[] names1 = {"Dark", "Haunted", "Eerie", "Blasted", "Forgotten", "Dragon's", "Mage's"};
 	string[] names2 = {"Forest", "Keep", "Castle", "Mountain", "Desert", "Tower", "Swamp"};
 	string[] names3 = {"Omisu", "Antiok", "Graey", "Felith", "Fish123", "xX_n00bKiller_Xx", "testbutts"};
 	public RectTransform containerRectTransform;
@@ -18,85 +22,130 @@ public class PanelController : MonoBehaviour
 
 	void Start () 
 	{
-		Debug.Log ("start");
+        GM = GameObject.FindGameObjectWithTag("GameMgr").GetComponent<GameStateManager>().manager;
 		containerRectTransform = gameObject.GetComponent<RectTransform>();
-		if (panelType == "Raid") {
-			sprites = Resources.LoadAll<Sprite> ("Sprites/RaidIcons");
-			AddCard ();
-		}
+
+		if (panelType == "Raid")
+        {
+            raid_icons = Resources.LoadAll<Sprite>("Sprites/RaidIcons");
+            req_icons = Resources.LoadAll<Sprite>("Sprites/Symbols");
+
+            List<RaidInstance> raids = GM.raids.GetAllRaids();
+            for (int i = 0; i < raids.Count; i++)
+            {
+                AddRaid(raids[i]);
+            }
+        }
 		if (panelType == "Character") 
 		{
-			//get random dude
-		}
+            req_icons = Resources.LoadAll<Sprite>("Sprites/Symbols");
+            characterSprites = Resources.LoadAll<Sprite>("Sprites/Guildies");
 
+            List<GuildMember> members = GM.members.GetGuildiesList();
+            for (int i = 0; i < members.Count; i++)
+            {
+                AddCharacter(members[i]);
+            }
+        }
 
-		for (int i = 0; i < 4; i++) {
-			AddCard ();
-		}
-
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
 
-	public void AddCard()
-	{
-		RectTransform rectTrans;
+    public void AddRaid(RaidInstance r)
+    {
+        RectTransform rectTrans;
 
-		GameObject newCard = Instantiate (Card);
-		rectTrans = newCard.GetComponent<RectTransform> ();
-		rectTrans.SetParent(this.gameObject.transform);
+        GameObject newCard = Instantiate(Card);
+        rectTrans = newCard.GetComponent<RectTransform>();
+        rectTrans.SetParent(this.gameObject.transform);
 
-		float width = containerRectTransform.rect.width;
-		float ratio = width / rectTrans.rect.width;
-		float height = rectTrans.rect.height * ratio;
+        float width = containerRectTransform.rect.width;
+        float ratio = width / rectTrans.rect.width;
+        float height = rectTrans.rect.height * ratio;
 
-		if (panelType == "Raid") 
-		{
-			//Populate Raid Info Here
-			string name = names1 [(int)Random.Range (0f, (float)names1.Length)] + " " + names2 [(int)Random.Range (0f, (float)names2.Length)];
-			newCard.name = name + " Card";
-			GameObject IconObj = newCard.transform.FindChild ("Icon").gameObject;
-			GameObject TitleObj = newCard.transform.FindChild ("Title").gameObject;
-			Image iconImg = IconObj.GetComponent<Image> ();
-			Text titleText = TitleObj.GetComponent<Text> ();
+        Image[] Images = newCard.GetComponentsInChildren<Image>();
+        Text title = newCard.transform.FindChild("Title").gameObject.GetComponent<Text>();
+        Text minFame = newCard.transform.FindChild("Fame").gameObject.GetComponent<Text>();
 
-			titleText.text = name;
-			iconImg.sprite = sprites[(int)Random.Range(0f,(float)sprites.Length)];
-		}
+        newCard.name = r.Name + " Card";
+        title.text = r.Name;
 
-		if (panelType == "Character") 
-		{
-			//Populate Character Info Here
-			string name = names3 [(int)Random.Range (0f, (float)names3.Length)];
-			newCard.name = name + " Card";
-			GameObject CharacternObj = newCard.transform.FindChild ("Character").gameObject;
-			GameObject NameObj = newCard.transform.FindChild ("Name").gameObject;
-			Text nameText = NameObj.GetComponent<Text> ();
+        minFame.text = r.MinFame.ToString();
 
-			//update character here
+        Images[1].sprite = raid_icons[(int)r.RaidClass]; //icon
+        Images[2].sprite = req_icons[(int)r.PreReqs[0]]; //Req0
+        Images[3].sprite = req_icons[(int)r.PreReqs[1]]; //Req1
+        Images[4].sprite = req_icons[(int)r.PreReqs[2]]; //Req2
+        Images[5].sprite = req_icons[(int)r.PreReqs[3]]; //Req3
+        Images[6].sprite = req_icons[(int)r.PreReqs[4]]; //Req4
 
-			nameText.text = name;
-		}
+        float x = 0;
+        float y = 0 - height * num_cards;
 
+        rectTrans.offsetMin = new Vector2(x, y);
 
+        x = rectTrans.offsetMin.x + width;
+        y = rectTrans.offsetMin.y + height;
+        rectTrans.offsetMax = new Vector2(x, y);
+        rectTrans.localScale = new Vector3(1, 1, 1);
 
-		float x = 0;
-		float y = 0 - height * num_cards;
+        containerRectTransform.offsetMax = new Vector2(containerRectTransform.offsetMax.x, height / 2 * (num_cards - 1));
 
-		rectTrans.offsetMin = new Vector2(x, y);
+        num_cards++;
+    }
 
-		x = rectTrans.offsetMin.x + width;
-		y = rectTrans.offsetMin.y + height;
-		rectTrans.offsetMax = new Vector2(x, y);
-		rectTrans.localScale = new Vector3(1, 1, 1);
+    public void AddCharacter(GuildMember m)
+    {
+        RectTransform rectTrans;
 
-		num_cards++;
-	}
+        GameObject newCard = Instantiate(Card);
+        rectTrans = newCard.GetComponent<RectTransform>();
+        rectTrans.SetParent(this.gameObject.transform);
 
-	void FadeAll(GameObject exclude)
+        float width = containerRectTransform.rect.width;
+        float ratio = width / rectTrans.rect.width;
+        float height = rectTrans.rect.height * ratio;
+
+        Image[] Images = newCard.GetComponentsInChildren<Image>();
+        Text name = newCard.transform.FindChild("Name").gameObject.GetComponent<Text>();
+        Text flavor = newCard.transform.FindChild("Flavor").gameObject.GetComponent<Text>();
+
+        newCard.name = m.Name + " Card";
+        name.text = m.Name;
+        if (m.Name.Length > 8)
+        {
+            name.fontSize = 4;
+        }
+
+        flavor.text = m.Flavor;
+
+        Images[0].sprite = req_icons[(int)m.Ability]; //Ability
+        Images[2].sprite = characterSprites[(int)m.Eyes]; //Eyes
+        Images[3].sprite = characterSprites[(int)m.Skin]; //Skin
+        Images[4].sprite = characterSprites[(int)m.Suit]; //Suit
+        Images[5].sprite = characterSprites[(int)m.Weapon]; //Weapon
+
+        float x = 0;
+        float y = 0 - height * num_cards;
+
+        rectTrans.offsetMin = new Vector2(x, y);
+
+        x = rectTrans.offsetMin.x + width;
+        y = rectTrans.offsetMin.y + height;
+        rectTrans.offsetMax = new Vector2(x, y);
+        rectTrans.localScale = new Vector3(1, 1, 1);
+
+        containerRectTransform.offsetMax = new Vector2(containerRectTransform.offsetMax.x, height/2 * (num_cards-1));
+
+        num_cards++;
+    }
+
+    void FadeAll(GameObject exclude)
 	{
 		/*Renderer GetComponentsInChildren<Renderer>();
 		foreach (HingeJoint joint in hingeJoints) {

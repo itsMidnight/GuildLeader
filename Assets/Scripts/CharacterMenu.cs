@@ -7,14 +7,14 @@ using System;
 
 public enum RaidReq
 {
-	Star,
-	Square,
-	Skull,
-	Moon,
-	X,
-	Diamond,
-	Triangle,
-	Circle
+    Star = 3,
+    Square = 4,
+	Skull = 0,
+    Moon = 7,
+    X = 1,
+	Diamond = 6,
+	Triangle = 5,
+	Circle = 2
 }
 
 [Serializable]
@@ -25,16 +25,30 @@ public class GuildMember
     [XmlElement("FlavorText")]
     public string Flavor { get; set; }
 
-    public string Description { get; set; }
-
     [XmlElement("Ability")]
-    public RaidReq PreReq { get; set; }
+    public RaidReq Ability { get; set; }
+
+    [XmlElement("Eyes")]
+    public Character.CharacterEyes Eyes { get; set; }
+
+    [XmlElement("Skin")]
+    public Character.CharacterSkinTone Skin { get; set; }
+
+    [XmlElement("Suit")]
+    public Character.CharacterSuit Suit { get; set; }
+
+    [XmlElement("Weapon")]
+    public Character.CharacterWeapon Weapon { get; set; }
 
     public GuildMember()
     {
         this.Name = "MrPoopyButthole";
-        this.Flavor = "Spicy";
-        this.Description = "No sad memories";
+        this.Flavor = "No sad memories";
+        this.Ability = RaidReq.Star;
+        this.Eyes = Character.CharacterEyes.Blue;
+        this.Skin = Character.CharacterSkinTone.Light;
+        this.Suit = Character.CharacterSuit.HeavyArmor1;
+        this.Weapon = Character.CharacterWeapon.SwordSheild;
     }
 }
 
@@ -70,6 +84,11 @@ public class MemberManager
     public GuildMember[] GetRaidTeam()
     {
         return null;
+    }
+
+    public List<GuildMember> GetGuildiesList()
+    {
+        return all.allBuddies;
     }
 
     public bool AddGuildMember()
@@ -141,7 +160,7 @@ public class MemberManager
         {
             for (int i = 0; i < applicants.Count; i++) //Yuck
             {
-                if(applicants[i].PreReq == item)
+                if(applicants[i].Ability == item)
                 {
                     applicants.RemoveAt(i);
                     break;
@@ -179,14 +198,6 @@ public class CharacterMenu : MonoBehaviour {
     {
         this.manager = new MemberManager();
         this.manager.LoadAvailable();
-    }
-	
-	void Update () {
-	    
-	}
-
-    void OnGUI()
-    {
     }
 
     void Add(int addIndex)
