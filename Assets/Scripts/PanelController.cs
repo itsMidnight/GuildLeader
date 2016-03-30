@@ -51,6 +51,14 @@ public class PanelController : MonoBehaviour
 
         
     }
+	
+	public void LaunchRaid()
+    {
+        if(panelType=="Raid")
+        {
+            SelectedCard.GetComponent<CardController>().LaunchRaid();
+        }
+    }
 
     public void AddRaid(RaidInstance r)
     {

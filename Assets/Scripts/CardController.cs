@@ -167,6 +167,10 @@ public class CardController : MonoBehaviour
 
             //set selection mode to true
             parentPanel.selectionMode = true;
+
+            //disable Launch Btn
+            GameObject.FindGameObjectWithTag("LaunchBtn").GetComponent<Button>().interactable = false;
+
         }
         else if (parentPanel.selectionMode) //---------This Character is Selected---------
         {
@@ -193,6 +197,7 @@ public class CardController : MonoBehaviour
                 if (parentPanel.GM.members.IsRaidReady())
                 {
                     Debug.Log("Raid Ready");
+                    GameObject.FindGameObjectWithTag("LaunchBtn").GetComponent<Button>().interactable = true;
                 }
             }
         }
@@ -266,6 +271,19 @@ public class CardController : MonoBehaviour
                 CR.SetAlpha(0.1f);
                 break;
             }
+        }
+    }
+
+    public void LaunchRaid()
+    {
+        if(parentPanel.panelType == "Raid")
+        {
+            RaidData inputs = new RaidData();
+            inputs.isWin = false;
+
+            LevelStateManager LvlMgr = GameObject.FindGameObjectWithTag("LevelMgr").GetComponent<LevelStateManager>();
+            LvlMgr.StartLevel(inputs);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
         }
     }
 }
