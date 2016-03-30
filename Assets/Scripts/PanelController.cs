@@ -150,7 +150,7 @@ public class PanelController : MonoBehaviour
         num_cards++;
     }
 
-    void FadeAll(GameObject exclude)
+    public void FadeAll(GameObject exclude)
 	{
 		/*Renderer GetComponentsInChildren<Renderer>();
 		foreach (HingeJoint joint in hingeJoints) {
