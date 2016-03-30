@@ -13,7 +13,7 @@
     <GuildMembers>
       <Name>Pam</Name>
       <FlavorText>Dunder Mifflin this is pam</FlavorText>
-      <Ability>Moon</Ability>
+      <Ability>Circle</Ability>
 	  <Eyes>Blue</Eyes>
 	  <Skin>Lightest</Skin>
 	  <Suit>Glamazon2</Suit>
@@ -31,7 +31,7 @@
 	<GuildMembers>
       <Name>Dwight</Name>
       <FlavorText>Bears, Beets, Battlestar Galactica</FlavorText>
-      <Ability>Square</Ability>
+      <Ability>Skull</Ability>
 	  <Eyes>Brown</Eyes>
 	  <Skin>Lightest</Skin>
 	  <Suit>Ranger3</Suit>

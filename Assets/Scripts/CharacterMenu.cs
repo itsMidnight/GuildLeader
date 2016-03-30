@@ -81,9 +81,14 @@ public class MemberManager
         this.all = new AvailableGuildies();
     }
 
-    public GuildMember[] GetRaidTeam()
+    public List<GuildMember> GetRaidTeam()
     {
-        return null;
+        return raidTeam;
+    }
+
+    public void ResetRaidTeam()
+    {
+        raidTeam = new List<GuildMember>(MaxRaidSize);
     }
 
     public List<GuildMember> GetGuildiesList()
