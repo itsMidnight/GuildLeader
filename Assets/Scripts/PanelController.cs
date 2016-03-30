@@ -10,6 +10,7 @@ public class PanelController : MonoBehaviour
 	public float xPadding = 2f;
 	private int num_cards = 1;
 	private GameObject[] Cards;
+    ScrollRect scrollView;
     Sprite[] raid_icons;
     Sprite[] req_icons;
     Sprite[] characterSprites;
@@ -22,6 +23,7 @@ public class PanelController : MonoBehaviour
 
 	void Start () 
 	{
+        scrollView = gameObject.transform.parent.parent.gameObject.GetComponent<ScrollRect>();
         GM = GameObject.FindGameObjectWithTag("GameMgr").GetComponent<GameStateManager>().manager;
 		containerRectTransform = gameObject.GetComponent<RectTransform>();
 
@@ -94,13 +96,14 @@ public class PanelController : MonoBehaviour
         rectTrans.offsetMax = new Vector2(x, y);
         rectTrans.localScale = new Vector3(1, 1, 1);
 
-        containerRectTransform.offsetMax = new Vector2(containerRectTransform.offsetMax.x, height / 2 * (num_cards - 1));
+        containerRectTransform.offsetMin = new Vector2(containerRectTransform.offsetMin.x, -1 * height * num_cards);
 
         num_cards++;
     }
 
     public void AddCharacter(GuildMember m)
     {
+
         RectTransform rectTrans;
 
         GameObject newCard = Instantiate(Card);
@@ -140,7 +143,9 @@ public class PanelController : MonoBehaviour
         rectTrans.offsetMax = new Vector2(x, y);
         rectTrans.localScale = new Vector3(1, 1, 1);
 
-        containerRectTransform.offsetMax = new Vector2(containerRectTransform.offsetMax.x, height/2 * (num_cards-1));
+        
+
+        containerRectTransform.offsetMin = new Vector2(containerRectTransform.offsetMin.x, -1* height  * num_cards);
 
         num_cards++;
     }
