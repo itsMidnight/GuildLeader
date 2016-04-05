@@ -1,13 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum MiniGameType
+{
+    DPS, 
+    Tank, 
+    Heals
+}
+
+
 public class RaidData
 {
     public bool isWin;
+    public MiniGameType gameType;
 }
 
 public class LevelStateManager : MonoBehaviour {
-
+    public static string MiniGameHostScene = "MiniGameView";
     public RaidData result; 
     private static LevelStateManager instance = null;
     public static LevelStateManager Instance

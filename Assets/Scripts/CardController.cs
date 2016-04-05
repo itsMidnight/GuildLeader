@@ -283,7 +283,7 @@ public class CardController : MonoBehaviour
 
             LevelStateManager LvlMgr = GameObject.FindGameObjectWithTag("LevelMgr").GetComponent<LevelStateManager>();
             LvlMgr.StartLevel(inputs);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(LevelStateManager.MiniGameHostScene);
         }
     }
 }
