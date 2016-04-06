@@ -4,7 +4,6 @@ using System.Linq;
 public class Enemy : MonoBehaviour
 {
     public int Force;
-    public bool First;
     private DPSGameStateManager gsManager;
 
     // Use this for initialization
@@ -12,17 +11,17 @@ public class Enemy : MonoBehaviour
     {
         gsManager = FindObjectOfType<DPSGameStateManager>();
         gsManager.EnemiesSeen++;
-        if (First)
-        {
-            Go();
-        }
     }
 
-    public void Go()
+    public void Run(float level)
     {
         var character = GetComponentInChildren<Character>();
         character.Init();
-		character.InitializeLookAndFeel(character.GetRandomSkinTone(), character.GetRandomSuit(), character.GetRandomWeapon(), character.GetRandomEyes());
-        character.MoveAcrossScreen(Force);
+
+        var transform = character.GetComponent<Transform>();
+        transform.position = new Vector3(-15, 0.2f, 0);
+
+        character.InitializeLookAndFeel(character.GetRandomSkinTone(), character.GetRandomSuit(), character.GetRandomWeapon(), character.GetRandomEyes());
+        character.MoveAcrossScreen(Force * Mathf.Pow(1.75f, level));
     }
 }

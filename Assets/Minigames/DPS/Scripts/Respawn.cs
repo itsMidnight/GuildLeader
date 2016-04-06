@@ -5,12 +5,11 @@ public class Respawn : MonoBehaviour
 {
     public GameObject enemy;
     private Dictionary<int, GameObject> dict;
-    private DPSGameStateManager stateManager;
+    public int Level;
 
     void Start()
     {
         dict = new Dictionary<int, GameObject>();
-        stateManager = GetComponentInParent<DPSGameStateManager>();
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -19,7 +18,7 @@ public class Respawn : MonoBehaviour
         {
             var gObj = Instantiate<GameObject>(enemy);
             var nme = gObj.GetComponent<Enemy>();
-            nme.Go();
+            nme.Run(Level);
             Destroy(coll.gameObject);
         }
     }
