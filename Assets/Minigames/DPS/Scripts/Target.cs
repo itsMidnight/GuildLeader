@@ -39,12 +39,12 @@ public class Target : MonoBehaviour
         if (characterDict.ContainsKey(id))
         {
             characterDict.Remove(id);
+            if (wasHit)
+            {
+                gameStateManager.Hits++;
+                wasHit = false;
+            }
         }
 
-        gameStateManager.EnemiesSeen += 1;
-        if(wasHit)
-        {
-            gameStateManager.Score += 1;
-        }
     }
 }
