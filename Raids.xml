@@ -2,25 +2,27 @@
 <FullRaidList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <InstanceList>
     <RaidInstances>
-      <Name>Naxx</Name>
+      <Name>Dragon's Mountain</Name>
       <MinFame>10</MinFame>
+      <RaidClass>Tank</RaidClass>
       <PreReqList>
+        <ReqType>Skull</ReqType>
+        <ReqType>X</ReqType>
         <ReqType>Star</ReqType>
-        <ReqType>Star</ReqType>
-        <ReqType>Star</ReqType>
-        <ReqType>Star</ReqType>
-        <ReqType>Star</ReqType>
+        <ReqType>Circle</ReqType>
+        <ReqType>Circle</ReqType>
       </PreReqList>
     </RaidInstances>
     <RaidInstances>
-      <Name>Naxx</Name>
+      <Name>Lost Woods</Name>
       <MinFame>10</MinFame>
+      <RaidClass>DPS</RaidClass>
       <PreReqList>
-        <ReqType>Star</ReqType>
-        <ReqType>Star</ReqType>
-        <ReqType>Star</ReqType>
-        <ReqType>Star</ReqType>
-        <ReqType>Star</ReqType>
+        <ReqType>Moon</ReqType>
+        <ReqType>Moon</ReqType>
+        <ReqType>Square</ReqType>
+        <ReqType>Diamond</ReqType>
+        <ReqType>Skull</ReqType>
       </PreReqList>
     </RaidInstances>
   </InstanceList>

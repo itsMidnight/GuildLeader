@@ -9,28 +9,34 @@ using System;
 public class Player {
 	public string Name { get; set; }
 	public string Description { get; set; }
-	public int Fame { get; set; }
+	public double Fame { get; set; }
 }
 
 public class PlayerMenu : MonoBehaviour {
 	public Player player;
 	private Text playerName;
+    private Text currentFame;
 
+    private static readonly double PassiveFameMultiplier = 1.0001;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 
-		Player p = new Player ();
-		p.Name = "Test";
-		p.Description = "TEEEEEEESSSSTTTT";
-		p.Fame = 1;
-	}
+		this.player = new Player ();
+		player.Name = "Test";
+		player.Description = "TEEEEEEESSSSTTTT";
+		player.Fame = 1;
+
+       // this.currentFame = gameObject.GetComponent<Text>();
+       this.currentFame = GameObject.FindGameObjectWithTag("FameText").GetComponent<Text>();
+    }
 
 	// Update is called once per frame
 	void Update () {
-
-	}
+        this.player.Fame *= PassiveFameMultiplier; 
+        currentFame.text = String.Format("Current Fame: {0:0.00}", this.player.Fame);
+    }
 
 	public void MakePlayer () {
 	}

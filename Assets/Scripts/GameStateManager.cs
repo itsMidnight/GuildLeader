@@ -7,7 +7,14 @@ public class GameDataManager
     public MemberManager members;
     public GameDataManager()
     {
+        raids = new RaidManager();
+        members = new MemberManager();
+    }
 
+    public void LoadImmatable()
+    {
+        raids.Load();
+        members.LoadAvailable();
     }
 }
 
@@ -31,18 +38,15 @@ public class GameStateManager : MonoBehaviour {
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-    }
 
-    public void StartGame()
-    {
         this.manager = new GameDataManager();
+        this.manager.LoadImmatable();
     }
     
     // Use this for initialization
     void Start()
     {
-		manager.raids.Load ();
-		manager.members.LoadAvailable ();
+        
     }
 
     // Update is called once per frame

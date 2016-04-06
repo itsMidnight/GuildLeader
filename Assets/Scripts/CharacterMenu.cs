@@ -7,10 +7,14 @@ using System;
 
 public enum RaidReq
 {
-    Star,
-    Square,
-    Skull,
-    Moon
+    Star = 3,
+    Square = 4,
+	Skull = 0,
+    Moon = 7,
+    X = 1,
+	Diamond = 6,
+	Triangle = 5,
+	Circle = 2
 }
 
 [Serializable]
@@ -21,16 +25,30 @@ public class GuildMember
     [XmlElement("FlavorText")]
     public string Flavor { get; set; }
 
-    public string Description { get; set; }
-
     [XmlElement("Ability")]
-    public RaidReq PreReq { get; set; }
+    public RaidReq Ability { get; set; }
+
+    [XmlElement("Eyes")]
+    public Character.CharacterEyes Eyes { get; set; }
+
+    [XmlElement("Skin")]
+    public Character.CharacterSkinTone Skin { get; set; }
+
+    [XmlElement("Suit")]
+    public Character.CharacterSuit Suit { get; set; }
+
+    [XmlElement("Weapon")]
+    public Character.CharacterWeapon Weapon { get; set; }
 
     public GuildMember()
     {
         this.Name = "MrPoopyButthole";
-        this.Flavor = "Spicy";
-        this.Description = "No sad memories";
+        this.Flavor = "No sad memories";
+        this.Ability = RaidReq.Star;
+        this.Eyes = Character.CharacterEyes.Blue;
+        this.Skin = Character.CharacterSkinTone.Light;
+        this.Suit = Character.CharacterSuit.HeavyArmor1;
+        this.Weapon = Character.CharacterWeapon.SwordSheild;
     }
 }
 
@@ -44,15 +62,13 @@ public class AvailableGuildies
     public AvailableGuildies()
     {
         this.allBuddies = new List<GuildMember>();
-        this.allBuddies.Add(new GuildMember());
-        this.allBuddies.Add(new GuildMember());
     }
 }
 
 public class MemberManager
 {
     List<GuildMember> currentMembers;
-    GuildMember[] raidTeam;
+    List<GuildMember> raidTeam;
     AvailableGuildies all;
 
     public static readonly int MaxRaidSize = 5;
@@ -61,13 +77,23 @@ public class MemberManager
     public MemberManager()
     {
         this.currentMembers = new List<GuildMember>();
-        this.raidTeam = new GuildMember[MaxRaidSize];
+        this.raidTeam = new List<GuildMember>(MaxRaidSize);
         this.all = new AvailableGuildies();
     }
 
-    public GuildMember[] GetRaidTeam()
+    public List<GuildMember> GetRaidTeam()
     {
-        return null;
+        return raidTeam;
+    }
+
+    public void ResetRaidTeam()
+    {
+        raidTeam = new List<GuildMember>(MaxRaidSize);
+    }
+
+    public List<GuildMember> GetGuildiesList()
+    {
+        return all.allBuddies;
     }
 
     public bool AddGuildMember()
@@ -94,14 +120,59 @@ public class MemberManager
 
     public void AddToRaid(GuildMember temp)
     {
-        for (int i = 0; i < raidTeam.Length; i++)
+        if(this.raidTeam.Count > MaxRaidSize)
         {
-            if (this.raidTeam[i] != null)
+            return;
+        }
+        this.raidTeam.Add(temp);
+    }
+
+    public void RemoveFromRaid(GuildMember temp)
+    {
+        for (int i = 0; i < raidTeam.Count; i++)
+        {
+            if(temp.Name == raidTeam[i].Name)
             {
-                this.raidTeam[i] = temp;
-                break;
+                raidTeam.RemoveAt(i);
             }
         }
+    }
+
+    /// <summary> Doesnt check prereqs, just body count </summary>
+    /// <returns>True if the users has enough raiders. </returns>
+    public bool IsRaidReady()
+    {
+        return this.raidTeam.Count == MaxRaidSize;
+    }
+
+    /// <summary> 
+    /// Check if raid meets prereqs. Static for now since I think it will end up in turbos control? 
+    /// If not just remove the members input but still need raid 
+    /// </summary>
+    /// <param name="members">Raiders heading to the raid</param>
+    /// <param name="raid">Raid requirements</param>
+    /// <returns>True if all requirements are met</returns>
+    public static bool IsRaidValid(List<GuildMember> members, RaidInstance raid)
+    {
+        RaidReq[] conditions = raid.PreReqs;
+        List<GuildMember> applicants = members;
+        if(applicants.Count <=0 || conditions.Length > applicants.Count)
+        {
+            return false;
+        }
+
+        foreach (RaidReq item in conditions)
+        {
+            for (int i = 0; i < applicants.Count; i++) //Yuck
+            {
+                if(applicants[i].Ability == item)
+                {
+                    applicants.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+        return applicants.Count==0;
     }
 
     public bool SaveList()
@@ -132,14 +203,6 @@ public class CharacterMenu : MonoBehaviour {
     {
         this.manager = new MemberManager();
         this.manager.LoadAvailable();
-    }
-	
-	void Update () {
-	    
-	}
-
-    void OnGUI()
-    {
     }
 
     void Add(int addIndex)

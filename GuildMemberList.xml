@@ -3,39 +3,57 @@
   <GuildMemberList>
     <GuildMembers>
       <Name>MrPoopyButthole</Name>
-      <FlavorText>Spicy</FlavorText>
-      <Description>No sad memories</Description>
+      <FlavorText>No sad memories</FlavorText>
       <Ability>Star</Ability>
+	  <Eyes>Green</Eyes>
+	  <Skin>Darkest</Skin>
+	  <Suit>Mage1</Suit>
+	  <Weapon>Magic</Weapon>
     </GuildMembers>
     <GuildMembers>
       <Name>Pam</Name>
-      <FlavorText>Spicy</FlavorText>
-      <Description>Dunder Mifflin this is pam</Description>
-      <Ability>Star</Ability>
+      <FlavorText>Dunder Mifflin this is pam</FlavorText>
+      <Ability>Circle</Ability>
+	  <Eyes>Blue</Eyes>
+	  <Skin>Lightest</Skin>
+	  <Suit>Glamazon2</Suit>
+	  <Weapon>Staff</Weapon>
     </GuildMembers>
 	<GuildMembers>
       <Name>MichaelScott</Name>
-      <FlavorText>Spicy</FlavorText>
-      <Description>That's what she said!</Description>
-      <Ability>Star</Ability>
+      <FlavorText>That's what she said!</FlavorText>
+      <Ability>Skull</Ability>
+	  <Eyes>Black</Eyes>
+	  <Skin>Light</Skin>
+	  <Suit>HeavyArmor1</Suit>
+	  <Weapon>SwordSheild</Weapon>
     </GuildMembers>
 	<GuildMembers>
       <Name>Dwight</Name>
-      <FlavorText>Spicy</FlavorText>
-      <Description>Bears, Beets, Battlestar Galactica</Description>
-      <Ability>Square</Ability>
+      <FlavorText>Bears, Beets, Battlestar Galactica</FlavorText>
+      <Ability>Skull</Ability>
+	  <Eyes>Brown</Eyes>
+	  <Skin>Lightest</Skin>
+	  <Suit>Ranger3</Suit>
+	  <Weapon>Bow</Weapon>
     </GuildMembers>
 	<GuildMembers>
       <Name>Jim</Name>
-      <FlavorText>Spicy</FlavorText>
-      <Description>Likes Pranks</Description>
-      <Ability>Moon</Ability>
+      <FlavorText>Likes Pranks</FlavorText>
+      <Ability>Circle</Ability>
+	  <Eyes>Blue</Eyes>
+	  <Skin>Light</Skin>
+	  <Suit>LightArmor1</Suit>
+	  <Weapon>Daggers</Weapon>
     </GuildMembers>
 	<GuildMembers>
       <Name>Andy</Name>
-      <FlavorText>Spicy</FlavorText>
-      <Description>Roodoodoo</Description>
-      <Ability>Skull</Ability>
+      <FlavorText>Roodoodoo</FlavorText>
+      <Ability>X</Ability>
+	  <Eyes>Orange</Eyes>
+	  <Skin>Medium</Skin>
+	  <Suit>Cape1</Suit>
+	  <Weapon>Staff</Weapon>
     </GuildMembers>
   </GuildMemberList>
 </AvailableGuildies>

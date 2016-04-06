@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum MiniGameType
+{
+    DPS, 
+    Tank, 
+    Heals
+}
 
 
-// Jess or Turbo fill in here??
 public class RaidData
 {
     public bool isWin;
+    public MiniGameType gameType;
 }
 
 public class LevelStateManager : MonoBehaviour {
-
+    public static string MiniGameHostScene = "MiniGameView";
     public RaidData result; 
     private static LevelStateManager instance = null;
     public static LevelStateManager Instance
@@ -28,25 +34,32 @@ public class LevelStateManager : MonoBehaviour {
         else {
             instance = this;
         }
-        //DontDestroyOnLoad(transform.gameObject);
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void StartLevel()
+    /// <summary> Saves inputs to the minigame </summary>
+    /// <param name="inputs"> passing in values </param>
+    public void StartLevel(RaidData inputs)
     {
-        result = new RaidData();
+        result = inputs;
     }
 
-    public void EndLevel(RaidData ret)
+
+    /// <summary> Saves outputs from the minigame </summary>
+    /// <param name="inputs"> result values </param>
+    public void EndLevel(RaidData returnData)
     {
-        result = ret;
+        result = returnData;
     }
 
+    /// <summary> Gets saved results from minigames. Call clear after </summary>
+    /// <returns>Datastructure with game results </returns>
     public RaidData GetResults()
     {
         return result; 
     }
 
+    /// <summary> Resets game results </summary>
     public void ClearResult()
     {
         result = null;
